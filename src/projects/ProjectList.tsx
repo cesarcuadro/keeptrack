@@ -12,6 +12,9 @@ const ProjectList = ({ projects }: ProjectListProps) => {
   const handleEdit = (project: Project) => {    
     setProjectBeingEdited(project);
   };
+  const cancelEditing = () => {
+    setProjectBeingEdited({});
+  };
   return (
     <ul className="row">
       {projects.map((project) => (
@@ -19,7 +22,7 @@ const ProjectList = ({ projects }: ProjectListProps) => {
           {projects.map((project) => (
             <div key={project.id} className="cols-sm">
               {project === projectBeingEdited ? (
-                <ProjectForm />
+                <ProjectForm  onCancel={cancelEditing}/>
               ) : (
               <ProjectCard project={project} onEdit={handleEdit} />
           )}
