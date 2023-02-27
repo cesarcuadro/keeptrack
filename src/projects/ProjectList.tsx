@@ -1,3 +1,4 @@
+import { Grid } from '@mui/material';
 import React, { useState } from 'react';
 import { Project } from './Project';
 import ProjectCard from './ProjectCard';
@@ -16,21 +17,21 @@ const ProjectList = ({ projects }: ProjectListProps) => {
     setProjectBeingEdited({});
   };
   return (
-    <ul className="row">
+    <Grid>
       {projects.map((project) => (
-        <div className="row">
+        <Grid container rowGap={1} columnGap={1} >
           {projects.map((project) => (
-            <div key={project.id} className="cols-sm">
+            <Grid key={project.id}>
               {project === projectBeingEdited ? (
                 <ProjectForm  onCancel={cancelEditing} project={project}/>
               ) : (
               <ProjectCard project={project} onEdit={handleEdit} />
           )}
-            </div>
+            </Grid>
           ))}
-        </div>
+        </Grid>
       ))}
-    </ul>
+    </Grid>
   )
 }
 
