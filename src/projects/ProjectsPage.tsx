@@ -23,7 +23,7 @@ const ProjectsPage = () => {
   const dispatch = useDispatch<ThunkDispatch<ProjectState, any, AnyAction>>();
 
   const handleMoreClick = () => {
-    setCurrentPage((currentPage) => currentPage + 1);
+    dispatch(loadProjects(currentPage + 1));
   };
 
   useEffect(() => {
