@@ -25,14 +25,20 @@ const ProjectCard = (props: ProjectCardProps) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
-      <img src={project.imageUrl} alt={project.name} />
+      <CardMedia component="img" src={project.imageUrl} alt={project.name} />
+      <CardContent>
       <Link to={'/projects/' + project.id}>
-        <h5 className="strong">
-          <strong>{project.name}</strong>
-        </h5>
-        <p>{formatDescription(project.description)}</p>
-        <p>Budget : {project.budget.toLocaleString()}</p>
+      <Typography gutterBottom variant="h5" component="div">
+          {project.name}
+      </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {formatDescription(project.description)}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Budget : {project.budget.toLocaleString()}
+        </Typography>
         </Link>
+        </CardContent>
         </CardActionArea>
         <CardActions>
         <Button 
@@ -40,9 +46,9 @@ const ProjectCard = (props: ProjectCardProps) => {
         color="primary"
           onClick={() => {
                       handleEditClick(project);
-                    }}
+          }}
+          style={{border: "solid"}}
         >
-          <span className="icon-edit "></span>
             Edit
           </Button>
           </CardActions>
