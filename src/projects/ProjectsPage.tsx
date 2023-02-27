@@ -49,9 +49,7 @@ const ProjectsPage = () => {
         </div>
       )}
 
-      <ProjectList projects={projects} onSave={function (project: Project): void {
-        throw new Error('Function not implemented.');
-      } } />
+      <ProjectList projects={projects}  />
       {!loading && !error && (
         <div className="row">
           <div className="col-sm-12">
