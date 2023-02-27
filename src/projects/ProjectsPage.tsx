@@ -27,27 +27,8 @@ const ProjectsPage = () => {
   };
 
   useEffect(() => {
-    async function loadProjects() {
-      setLoading(true);
-      try {
-        const data = await projectAPI.get(currentPage);
-        setError('');
-        if (currentPage === 1) {
-          setProjects(data);
-        } else {
-          setProjects((projects) => [...projects, ...data]);
-        }
-      }
-       catch (e) {
-        if (e instanceof Error) {
-          setError(e.message);
-        }
-        } finally {
-        setLoading(false);
-      }
-    }
-    loadProjects();
-  }, [currentPage]);
+    dispatch(loadProjects(1));
+  }, [dispatch]);
 
   const saveProject = (project: Project) => {
     projectAPI
