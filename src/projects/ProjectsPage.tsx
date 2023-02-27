@@ -1,7 +1,9 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import ProjectList from './ProjectList';
-import { Project } from './Project';
-import { projectAPI } from './projectAPI';
+import { loadProjects } from './state/projectActions';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { ProjectState } from './state/projectTypes';
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState<Project[]>([]);
