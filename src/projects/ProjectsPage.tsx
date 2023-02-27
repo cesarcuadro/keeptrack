@@ -1,15 +1,27 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import ProjectList from './ProjectList';
+import { useSelector, useDispatch } from 'react-redux';
+import { AppState } from '../state';
 import { loadProjects } from './state/projectActions';
 import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { ProjectState } from './state/projectTypes';
 
 const ProjectsPage = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | undefined>(undefined);
-  const [currentPage, setCurrentPage] = useState(1);
+  const loading = useSelector(
+    (appState: AppState) => appState.projectState.loading
+  );
+  const projects = useSelector(
+    (appState: AppState) => appState.projectState.projects
+  );
+  const error = useSelector(
+    (appState: AppState) => appState.projectState.error
+  );
+  const currentPage = useSelector(
+    (appState: AppState) => appState.projectState.page
+  );
+  const dispatch = useDispatch<ThunkDispatch<ProjectState, any, AnyAction>>();
+
   const handleMoreClick = () => {
     setCurrentPage((currentPage) => currentPage + 1);
   };
