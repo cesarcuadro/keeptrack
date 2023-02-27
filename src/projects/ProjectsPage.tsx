@@ -6,7 +6,6 @@ import { loadProjects } from './state/projectActions';
 import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { ProjectState } from './state/projectTypes';
-import { Project } from './Project';
 
 const ProjectsPage = () => {
   const loading = useSelector(
