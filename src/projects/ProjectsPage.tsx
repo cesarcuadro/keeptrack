@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import ProjectList from './ProjectList';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../state';
@@ -6,6 +6,7 @@ import { loadProjects } from './state/projectActions';
 import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { ProjectState } from './state/projectTypes';
+import { Project } from './Project';
 
 const ProjectsPage = () => {
   const loading = useSelector(
@@ -30,21 +31,6 @@ const ProjectsPage = () => {
     dispatch(loadProjects(1));
   }, [dispatch]);
 
-  const saveProject = (project: Project) => {
-    projectAPI
-     .put(project)
-     .then((updatedProject) => {
-       let updatedProjects = projects.map((p: Project) => {
-         return p.id === project.id ? new Project(updatedProject) : p;
-       });
-       setProjects(updatedProjects);
-     })
-     .catch((e) => {
-        if (e instanceof Error) {
-         setError(e.message);
-        }
-     });
-  };
 
   return (
     <Fragment>
@@ -63,7 +49,9 @@ const ProjectsPage = () => {
         </div>
       )}
 
-      <ProjectList onSave={saveProject} projects={projects} />
+      <ProjectList projects={projects} onSave={function (project: Project): void {
+        throw new Error('Function not implemented.');
+      } } />
       {!loading && !error && (
         <div className="row">
           <div className="col-sm-12">
