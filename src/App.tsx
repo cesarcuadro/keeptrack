@@ -12,12 +12,7 @@ function App() {
   return (
     <Provider store={store}>
     <Router>
-      <header className="sticky">
-        <span className="logo">
-          <img src="/assets/logo-3.svg" alt="logo" width="49" height="99" />
-        </span>
         <Header />
-      </header>
       <div className="container">
         <Routes>
           <Route path="/" element={<HomePage />} />
