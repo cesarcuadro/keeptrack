@@ -7,7 +7,7 @@ import ProjectPage from './projects/ProjectPage'
 import { Provider } from 'react-redux';
 import { store } from './state';
 import Header from './home/Header';
-import { Box, styled } from '@mui/system';
+import { styled } from '@mui/system';
 
 function App() {
 
