@@ -26,7 +26,6 @@ function ProjectPage(props: any) {
   }, [id]);
 
   return (
-    <div>
       <>
         <h1>Project Detail</h1>
 
@@ -51,7 +50,6 @@ function ProjectPage(props: any) {
 
         {project && <ProjectDetail project={project} />}
       </>
-    </div>
   );
 }
 
