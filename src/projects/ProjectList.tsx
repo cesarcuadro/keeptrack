@@ -19,7 +19,7 @@ const ProjectList = ({ projects }: ProjectListProps) => {
   return (
     <Grid>
       {projects.map((project) => (
-        <Grid container rowGap={1} columnGap={1} >
+        <Grid container rowGap={1} columnGap={1} justifyContent="center" >
           {projects.map((project) => (
             <Grid key={project.id}>
               {project === projectBeingEdited ? (
