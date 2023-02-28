@@ -33,7 +33,7 @@ const ProjectsPage = () => {
 
   return (
     <Fragment>
-      <h1>Projects</h1>
+      <h1 style={{display: "flex", justifyContent: "center"}}>Projects</h1>
 
       {error && (
         <div className="row">
