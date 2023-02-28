@@ -10,17 +10,19 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import { Link as RouterLink } from 'react-router-dom';
 
 const pages = [
-    {
-      title: 'Home',
-      path: '/'
-    },
-    {
-      title: 'Projects',
-      path: '/projects'
-    }
-  ];
+  {
+    title: 'Home',
+    path: '/'
+  },
+  {
+    title: 'Projects',
+    path: '/projects'
+  }
+];
+
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
@@ -31,7 +33,6 @@ const ResponsiveAppBar = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
 
   return (
     <AppBar position="static">
@@ -68,41 +69,42 @@ const ResponsiveAppBar = () => {
             >
               {pages.map((page, index) => (
                 <MenuItem key={index} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page.title}</Typography>
+                  <Typography textAlign="center" component={RouterLink} to={page.path}>
+                    {page.title}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
-            
           </Box>
           <Avatar
             src="/assets/logo-3.svg" 
             alt="Logo"   
             sx={{ width: 45, height: 45 }}
-           />
-<Typography
-  variant="h6"
-  noWrap
-  component="a"
-  href="/"
-  sx={{
-    mr: 2,
-    display: { xs: 'none', md: 'flex' },
-    fontFamily: 'monospace',
-    fontWeight: 700,
-    letterSpacing: '.3rem',
-    color: 'inherit',
-    textDecoration: 'none',
-  }}
->
-</Typography>
-
+          />
+          <Typography
+            variant="h6"
+            noWrap
+            component={RouterLink}
+            to="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page.title}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
-                href={page.path}
+                component={RouterLink}
+                to={page.path}
               >
                 {page.title}
               </Button>
@@ -113,4 +115,5 @@ const ResponsiveAppBar = () => {
     </AppBar>
   );
 }
+
 export default ResponsiveAppBar;
