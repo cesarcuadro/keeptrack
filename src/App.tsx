@@ -7,19 +7,29 @@ import ProjectPage from './projects/ProjectPage'
 import { Provider } from 'react-redux';
 import { store } from './state';
 import Header from './home/Header';
+import { Box, styled } from '@mui/system';
 
 function App() {
+
+  const MainContainer = styled("div")({
+    display: "flex",
+    flexDirection: "column",
+    fontFamily: "sans-serif",
+    height: "92vh",
+    overflow: "auto"
+  })
+
   return (
     <Provider store={store}>
     <Router>
         <Header />
-      <div className="container">
+      <MainContainer>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/:id" element={<ProjectPage />} />
         </Routes>
-      </div>
+      </MainContainer>
     </Router>
     </Provider>
   );
