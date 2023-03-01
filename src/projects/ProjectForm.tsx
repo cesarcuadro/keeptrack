@@ -5,7 +5,7 @@ import { saveProject } from './state/projectActions';
 import { ThunkDispatch } from 'redux-thunk';
 import { ProjectState } from './state/projectTypes';
 import { AnyAction } from 'redux';
-import { Button, Card, CardContent, TextField } from '@mui/material';
+import { Button, Card, CardContent, Checkbox, TextField } from '@mui/material';
 
 interface ProjectFormProps {
   project: Project;
@@ -104,7 +104,7 @@ const dispatch = useDispatch<ThunkDispatch<ProjectState, any, AnyAction>>();
         </div>
       )}
       <label htmlFor="isActive">Active?</label>
-      <input type="checkbox" name="isActive" checked={project.isActive} onChange={handleChange} />
+      <Checkbox name="isActive" checked={project.isActive} onChange={handleChange} />
       <div className="input-group">
         <Button type='submit'>Save</Button>
         <span />
