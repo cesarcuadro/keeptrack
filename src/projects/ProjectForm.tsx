@@ -5,6 +5,7 @@ import { saveProject } from './state/projectActions';
 import { ThunkDispatch } from 'redux-thunk';
 import { ProjectState } from './state/projectTypes';
 import { AnyAction } from 'redux';
+import { Button, Card, CardContent, TextField } from '@mui/material';
 
 interface ProjectFormProps {
   project: Project;
@@ -78,23 +79,25 @@ const dispatch = useDispatch<ThunkDispatch<ProjectState, any, AnyAction>>();
     );
   }
   return (
-    <form className="input-group vertical" onSubmit={handleSubmit}>
+    <Card sx={{minHeight: 420}} >
+      <CardContent >
+    <form style={{display: "flex", flexDirection: "column"}} onSubmit={handleSubmit}>
       <label htmlFor="name">Project Name</label>
-      <input type="text" name="name" placeholder="enter name" value={project.name} onChange={handleChange} />
+      <TextField type="text" name="name" placeholder="enter name" value={project.name} onChange={handleChange} />
       {errors.name.length > 0 && (
         <div className="card error">
           <p>{errors.name}</p>
         </div>
       )}
       <label htmlFor="description">Project Description</label>
-      <textarea name="description" placeholder="enter description" value={project.description} onChange={handleChange} />
+      <TextField name="description" placeholder="enter description" value={project.description} onChange={handleChange} />
       {errors.description.length > 0 && (
         <div className="card error">
           <p>{errors.description}</p>
         </div>
       )}
       <label htmlFor="budget">Project Budget</label>
-      <input type="number" name="budget" placeholder="enter budget" value={project.budget} onChange={handleChange} />
+      <TextField type="number" name="budget" placeholder="enter budget" value={project.budget} onChange={handleChange} />
       {errors.budget.length > 0 && (
         <div className="card error">
           <p>{errors.budget}</p>
@@ -103,13 +106,15 @@ const dispatch = useDispatch<ThunkDispatch<ProjectState, any, AnyAction>>();
       <label htmlFor="isActive">Active?</label>
       <input type="checkbox" name="isActive" checked={project.isActive} onChange={handleChange} />
       <div className="input-group">
-        <button className="primary bordered medium">Save</button>
+        <Button type='submit'>Save</Button>
         <span />
-        <button type="button" className="bordered medium" onClick={onCancel}>
+        <Button type="button" className="bordered medium" onClick={onCancel}>
           cancel
-        </button>
+        </Button>
       </div>
     </form>
+    </CardContent>
+    </Card>
   );
 }
 

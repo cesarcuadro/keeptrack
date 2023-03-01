@@ -23,7 +23,7 @@ const ProjectCard = (props: ProjectCardProps) => {
     onEdit(projectBeingEdited);
       };
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, minHeight: 420 }}>
       <CardActionArea>
       <CardMedia component="img" src={project.imageUrl} alt={project.name} />
       <CardContent>

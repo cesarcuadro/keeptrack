@@ -12,6 +12,8 @@ import {
   ProjectState,
 } from './projectTypes';
 
+
+// asynchronous thunk actions for API
 //action creators
 export function loadProjects(
   page: number

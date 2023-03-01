@@ -20,6 +20,7 @@ import {
     page: 1,
   };
   
+  //reducers are not asynchronous
   export function projectReducer(
     state = initialProjectState,
     action: ProjectActionTypes
