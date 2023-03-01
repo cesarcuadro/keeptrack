@@ -83,21 +83,21 @@ const dispatch = useDispatch<ThunkDispatch<ProjectState, any, AnyAction>>();
       <CardContent >
     <form style={{display: "flex", flexDirection: "column"}} onSubmit={handleSubmit}>
       <label htmlFor="name">Project Name</label>
-      <TextField type="text" name="name" placeholder="enter name" value={project.name} onChange={handleChange} />
+      <TextField type="text" name="name" placeholder="enter name" value={project.name} onChange={handleChange} size="small" />
       {errors.name.length > 0 && (
         <div className="card error">
           <p>{errors.name}</p>
         </div>
       )}
       <label htmlFor="description">Project Description</label>
-      <TextField name="description" placeholder="enter description" value={project.description} onChange={handleChange} />
+      <TextField name="description" placeholder="enter description" value={project.description} onChange={handleChange} size="small" />
       {errors.description.length > 0 && (
         <div className="card error">
           <p>{errors.description}</p>
         </div>
       )}
       <label htmlFor="budget">Project Budget</label>
-      <TextField type="number" name="budget" placeholder="enter budget" value={project.budget} onChange={handleChange} />
+      <TextField type="number" name="budget" placeholder="enter budget" value={project.budget} onChange={handleChange} size="small" />
       {errors.budget.length > 0 && (
         <div className="card error">
           <p>{errors.budget}</p>
