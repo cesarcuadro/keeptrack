@@ -24,7 +24,19 @@ const HomePage = () => {
           opacity: "50%"
           }}>
           <h2>Welcome to Acme Co</h2>
-          <p>Acme Co is a project management company specializing in commercial real estate. Our team of experienced professionals provides comprehensive project management services, including planning, budgeting, scheduling, and oversight, to ensure successful and timely completion of your commercial real estate projects. With a focus on quality, efficiency, and client satisfaction, we are committed to delivering exceptional results that meet your business objectives. Let us help you bring your commercial real estate projects to life.</p>
+      </div>
+      <div style={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          marginTop: "10px",
+          border: "solid",
+          margin: '10px',
+          backgroundColor: "whitesmoke",
+          opacity: "50%"
+          }}>
+            <h3>About Us</h3>
+          <p style={{margin: "50px", fontWeight: "bold"}}>Acme Co is a project management company specializing in commercial real estate. Our team of experienced professionals provides comprehensive project management services, including planning, budgeting, scheduling, and oversight, to ensure successful and timely completion of your commercial real estate projects. With a focus on quality, efficiency, and client satisfaction, we are committed to delivering exceptional results that meet your business objectives. Let us help you bring your commercial real estate projects to life.</p>
       </div>
       </div>
     </>
