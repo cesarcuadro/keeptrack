@@ -14,7 +14,9 @@ import { Link as RouterLink } from 'react-router-dom';
 
 const pages = [
   {
+    // title is name of the page that will appear on the dropdown menu 
     title: 'Home',
+    // path is where the url or route that the application will load once clicked upon
     path: '/'
   },
   {
@@ -24,12 +26,16 @@ const pages = [
 ];
 
 const ResponsiveAppBar = () => {
+  //This useState is for referencing the DOM through the use of React
+  // with the use of typescript, its initial state is null and can change later to an HTMLElement
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
+  //function to respond to the user event of clicking the mouse on the navbar
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
 
+  //function to set that initial state of the navbar as closed
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
