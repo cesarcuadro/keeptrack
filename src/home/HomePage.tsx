@@ -13,8 +13,10 @@ const HomePage = () => {
         paddingTop: 6,
         textAlign: "center",
       }}>
-      <h2>Welcome to Acme Co</h2>
-      <p>Paragraph</p>
+        <div>
+          <h2>Welcome to Acme Co</h2>
+          <p>Paragraph</p>
+      </div>
       </div>
     </>
   )
