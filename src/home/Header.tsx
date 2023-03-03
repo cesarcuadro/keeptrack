@@ -41,14 +41,18 @@ const ResponsiveAppBar = () => {
   };
 
   return (
+    // material ui app bar
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          {/* Box is used instead of a div in order to group elements and set styling */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
+              //aria-controls sets the ID of the element that the IconButton controls
               aria-controls="menu-appbar"
+              //aria-haspopup indicates that the IconButton opens up a menu 
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
@@ -57,12 +61,18 @@ const ResponsiveAppBar = () => {
             </IconButton>
             <Menu
               id="menu-appbar"
+              //specifies that the menu needs to be anchored
+              //when an element is anchored, it is staying in a position relative to another element
+              //which is controlled by the props above
               anchorEl={anchorElNav}
+              //anchorOrigin specifies where the element 
               anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'left',
               }}
+              //keepMounted is so that the menu button will always be on the DOM even if its not displayed at the moment
               keepMounted
+              //transformOrigin specifies where the menu is relative to the anchor point
               transformOrigin={{
                 vertical: 'top',
                 horizontal: 'left',
@@ -73,8 +83,13 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
+              {/* Dynamically generates a list of menu items */}
+              {/* pages is the array at the top that holds the name of the button and the path of where it goes to */}
               {pages.map((page, index) => (
+                //key is assigned to each menu item in which it needs to render
                 <MenuItem key={index} onClick={handleCloseNavMenu}>
+                  {/* typography is used to display the title of the page */}
+                  {/* component specifies that the title will be rendered as a link */}
                   <Typography textAlign="center" component={RouterLink} to={page.path}>
                     {page.title}
                   </Typography>
@@ -87,6 +102,7 @@ const ResponsiveAppBar = () => {
             alt="Logo"   
             sx={{ width: 45, height: 45 }}
           />
+          {/* This will display when the screen is in desktop mode or if the screen is medium or bigger */}
           <Typography
             variant="h6"
             noWrap
@@ -104,6 +120,8 @@ const ResponsiveAppBar = () => {
           >
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {/* this will not display on extra small screens, but it will on medium */}
+            {/* using the map method,  it will create an button for each object in the pages array */}
             {pages.map((page) => (
               <Button
                 key={page.title}
