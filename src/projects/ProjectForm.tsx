@@ -1,23 +1,31 @@
 import React, { SyntheticEvent, useState } from 'react';
 import { Project } from './Project';
+import { useDispatch } from 'react-redux';
+import { saveProject } from './state/projectActions';
+import { ThunkDispatch } from 'redux-thunk';
+import { ProjectState } from './state/projectTypes';
+import { AnyAction } from 'redux';
+import { Button, Card, CardContent, Checkbox, TextField } from '@mui/material';
 
 interface ProjectFormProps {
   project: Project;
-  onSave: (project: Project) => void;
   onCancel: () => void;
- }
+}
 
-const ProjectForm = ({ project: initialProject, onSave, onCancel }: ProjectFormProps) => {
+const ProjectForm = ({ project: initialProject, onCancel }: ProjectFormProps) => {
   const [project, setProject] = useState(initialProject);
   const [errors, setErrors] = useState({
    name: '',
    description: '',
    budget: '',
  });
+
+const dispatch = useDispatch<ThunkDispatch<ProjectState, any, AnyAction>>();
+
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
     if (!isValid()) return;
-    onSave(project);
+    dispatch(saveProject(project));
   };
   const handleChange = (event: any) => {
       const { type, name, value, checked } = event.target;
@@ -71,38 +79,42 @@ const ProjectForm = ({ project: initialProject, onSave, onCancel }: ProjectFormP
     );
   }
   return (
-    <form className="input-group vertical" onSubmit={handleSubmit}>
+    <Card sx={{minHeight: 420}} >
+      <CardContent >
+    <form style={{display: "flex", flexDirection: "column"}} onSubmit={handleSubmit}>
       <label htmlFor="name">Project Name</label>
-      <input type="text" name="name" placeholder="enter name" value={project.name} onChange={handleChange} />
+      <TextField type="text" name="name" placeholder="enter name" value={project.name} onChange={handleChange} size="small" />
       {errors.name.length > 0 && (
         <div className="card error">
           <p>{errors.name}</p>
         </div>
       )}
       <label htmlFor="description">Project Description</label>
-      <textarea name="description" placeholder="enter description" value={project.description} onChange={handleChange} />
+      <TextField name="description" placeholder="enter description" value={project.description} onChange={handleChange} size="small" />
       {errors.description.length > 0 && (
         <div className="card error">
           <p>{errors.description}</p>
         </div>
       )}
       <label htmlFor="budget">Project Budget</label>
-      <input type="number" name="budget" placeholder="enter budget" value={project.budget} onChange={handleChange} />
+      <TextField type="number" name="budget" placeholder="enter budget" value={project.budget} onChange={handleChange} size="small" />
       {errors.budget.length > 0 && (
         <div className="card error">
           <p>{errors.budget}</p>
         </div>
       )}
       <label htmlFor="isActive">Active?</label>
-      <input type="checkbox" name="isActive" checked={project.isActive} onChange={handleChange} />
+      <Checkbox name="isActive" checked={project.isActive} onChange={handleChange} />
       <div className="input-group">
-        <button className="primary bordered medium">Save</button>
+        <Button type='submit'>Save</Button>
         <span />
-        <button type="button" className="bordered medium" onClick={onCancel}>
+        <Button type="button" className="bordered medium" onClick={onCancel}>
           cancel
-        </button>
+        </Button>
       </div>
     </form>
+    </CardContent>
+    </Card>
   );
 }
 

@@ -1,4 +1,10 @@
-import React from 'react'
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
+
 import { Project } from './Project'
 import { Link } from 'react-router-dom';
 
@@ -17,27 +23,36 @@ const ProjectCard = (props: ProjectCardProps) => {
     onEdit(projectBeingEdited);
       };
   return (
-    <div className="card">
-      <img src={project.imageUrl} alt={project.name} />
-      <section className="section dark">
+    <Card sx={{ maxWidth: 345, minHeight: 420 }}>
+      <CardActionArea>
+      <CardMedia component="img" src={project.imageUrl} alt={project.name} />
+      <CardContent>
       <Link to={'/projects/' + project.id}>
-        <h5 className="strong">
-          <strong>{project.name}</strong>
-        </h5>
-        <p>{formatDescription(project.description)}</p>
-        <p>Budget : {project.budget.toLocaleString()}</p>
+      <Typography gutterBottom variant="h5" component="div">
+          {project.name}
+      </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {formatDescription(project.description)}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Budget : {project.budget.toLocaleString()}
+        </Typography>
         </Link>
-        <button 
-          className="bordered"
+        </CardContent>
+        </CardActionArea>
+        <CardActions>
+        <Button 
+        size="small"
+        color="primary"
           onClick={() => {
                       handleEditClick(project);
-                    }}
+          }}
+          style={{border: "solid"}}
         >
-          <span className="icon-edit "></span>
             Edit
-          </button>
-      </section>
-    </div>
+          </Button>
+          </CardActions>
+      </Card>
   )
 }
 

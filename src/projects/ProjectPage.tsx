@@ -26,9 +26,8 @@ function ProjectPage(props: any) {
   }, [id]);
 
   return (
-    <div>
       <>
-        <h1>Project Detail</h1>
+        <h1 style={{display: "flex", justifyContent: "center"}}>Project Detail</h1>
 
         {loading && (
           <div className="center-page">
@@ -48,10 +47,10 @@ function ProjectPage(props: any) {
             </div>
           </div>
         )}
-
+        <div style={{display: "flex", justifyContent: "center"}}>
         {project && <ProjectDetail project={project} />}
+        </div>
       </>
-    </div>
   );
 }
 
